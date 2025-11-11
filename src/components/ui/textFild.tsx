@@ -1,21 +1,22 @@
-import { FontAwesome6 } from "@expo/vector-icons";
+
+import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TextInput, TextInputProps, View } from "react-native";
 
 type Props = TextInputProps & {
     label: string;
     errorText?: string;
-    icon?: keyof typeof FontAwesome6.glyphMap;
+    icon?: keyof typeof MaterialIcons.glyphMap;
 }
 
 export default function TextField({label, errorText, icon}: Props){
     return (
         <View>
-            <Text>Teste de label</Text>
+            <Text>{label}</Text>
             <View>
                 {!! icon && (
                     <View> 
-                        <FontAwesome6 name={icon} size={18} color="black"/>
+                        <MaterialIcons name={icon} size={18} color="black"/>
                     </View>
                 )}
 
