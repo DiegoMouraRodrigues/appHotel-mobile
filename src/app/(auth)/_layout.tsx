@@ -6,9 +6,8 @@
  replace(): subtitui uma tela por outra*/
 
 import { Stack } from "expo-router";
-import { StackScreen } from "react-native-screens";
 
- export default function AuthLayout(){
+const AuthLayout = () =>{
     return (
         <Stack screenOptions={{headerShown:false}}>
             <Stack.Screen name="index" options={{title: "login"}}/>
@@ -17,3 +16,5 @@ import { StackScreen } from "react-native-screens";
         </Stack>
     )
  }
+
+ export default AuthLayout;

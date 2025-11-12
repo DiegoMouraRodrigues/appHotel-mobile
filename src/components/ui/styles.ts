@@ -41,6 +41,50 @@ export const global = StyleSheet.create({
         elevation: 8,
         shadowColor: "red",
         
+    },
+
+    //imputs
+    inputGroup:{
+        marginBottom: height * 0.02,
+    },
+
+    label:{
+        fontSize: 17,
+        fontWeight: "600",
+        color: "#000000ff",
+        marginBottom: height * 0.02
+    },
+
+    inputIcon:{
+        backgroundColor: "#ffffff",
+        paddingLeft: width *0.02,
+        flexDirection:"row",
+        alignItems: "center",
+        borderEndWidth: 2,
+        borderColor: "#240144",
+        borderRadius: 10,
+        
+    },
+
+    inputError:{
+         backgroundColor: "#f5b5b5ff",
+         borderColor: "#ff2002ff"
+    },
+
+    input:{
+        flex: 1,
+        fontSize: 17,
+        color: "#0000",
+        fontWeight: "600",
+        paddingHorizontal: width * 0.02
+    },
+
+    errorText:{
+        color:"red",
+        fontWeight: "600",
+        fontSize: 15,
+        marginTop: height * 0.01
+
     }
 
 })

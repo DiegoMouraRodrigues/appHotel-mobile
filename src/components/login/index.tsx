@@ -1,15 +1,14 @@
 import TextField from "../ui/textFild";
 import AuthContainer from "../ui/AuthContainer";
 
-
-export function RenderLogin(){
+const RenderLogin = () =>{
     return (
              <AuthContainer
                 title="Bem-vindo"
                 subtitle="Faça seu login para continuar!"
                 icon="hotel">
             
-
+                {/*children*/ }
                 <TextField
                 label="E-email"
                 icon="email"
@@ -20,3 +19,5 @@ export function RenderLogin(){
        
     )
 }
+
+export default RenderLogin;
