@@ -1,90 +1,98 @@
-
-import {StyleSheet, Dimensions } from "react-native";
-const {width, height} = Dimensions.get("window");
-
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = Dimensions.get("window");
 export const global = StyleSheet.create({
     safeArea: {
         flex: 1,
         backgroundColor: "#fff"
     },
-    KeyboardAvoiding:{
+    keyboardAvoiding: {
         flex: 1
     },
-
-    container:{
+    container: {
         paddingHorizontal: width * 0.07,
-        paddingVertical: height * 0.07,
-        
+        paddingVertical: height * 0.07
     },
-
-    header:{
+    header: {
         alignItems: "center",
-        marginTop: height * 0.03
+        marginBottom: height * 0.03
     },
-    title:{
-        fontSize:20,
-        fontWeight:"800",
-        /*para atribuir cor: color:*/ 
+    title: {
+        fontSize: 25,
+        fontWeight: "800",
+        /*Para atribuir cor: color:*/
     },
-    
-    subtitle:{
-        fontSize:17,
-        marginTop: height * 0.03
-
-
-        
+    subtitle: {
+        fontSize: 17,
+        color: "#3b01dbff",
+        marginTop: height * 0.01
     },
-    content:{
-        backgroundColor: "#fff",
+    content: {
+        backgroundColor: "#eef3faff",
         borderRadius: 10,
         padding: width * 0.02,
-        elevation: 8,
-        shadowColor: "red",
-        
+        shadowColor: "#0e0b0bff",
+        shadowOpacity: 0.05,
+        shadowRadius: 10,
+        elevation: 2
     },
-
-    //imputs
-    inputGroup:{
+    //Inputs
+    inputGroup: {
         marginBottom: height * 0.02,
     },
-
-    label:{
+    label: {
         fontSize: 17,
         fontWeight: "600",
-        color: "#000000ff",
-        marginBottom: height * 0.02
+        color: "#120715ff",
+        marginBottom: height * 0.01
     },
-
-    inputIcon:{
-        backgroundColor: "#ffffff",
-        paddingLeft: width *0.02,
-        flexDirection:"row",
+    inputIcon: {
+        backgroundColor: "#fcfcffff",
+        paddingLeft: width * 0.02,
+        flexDirection: "row",
         alignItems: "center",
-        borderEndWidth: 2,
-        borderColor: "#240144",
-        borderRadius: 10,
-        
+        borderWidth: 2,
+        borderColor: "#420350ff",
+        borderRadius: 10
+    },
+    inputError: {
+       backgroundColor: "#fed5d5ff",
+        borderColor: "rgba(139, 0, 0, 1)",
     },
 
-    inputError:{
-         backgroundColor: "#f5b5b5ff",
-         borderColor: "#ff2002ff"
-    },
-
-    input:{
+    input: {
         flex: 1,
         fontSize: 17,
-        color: "#0000",
-        fontWeight: "600",
+        color: "#000",
         paddingHorizontal: width * 0.02
     },
 
-    errorText:{
-        color:"red",
+    eyeIcon:{
+      position: "absolute",
+      right: 12,
+      top:45  
+    },
+
+    errorText: {
+        color: "red",
         fontWeight: "600",
         fontSize: 15,
-        marginTop: height * 0.01
+        marginTop: height * 0.01   
+    },
 
+    primayButton:{
+        backgroundColor:"#34036b",
+        borderRadius: 10,
+        padding: width *0.02,
+        alignItems: "center"
+    },
+
+    primaryButtonDisabled:{
+        backgroundColor: "#727272ff",
+        borderRadius: 10,
+    },
+
+    primaryButtonText:{
+        color: "#ffff"
     }
 
-})
+})  

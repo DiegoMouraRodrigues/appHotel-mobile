@@ -5,7 +5,7 @@ import { Text, TextInput, TextInputProps, View } from "react-native";
 import { global } from "./styles";
 
 type Props = TextInputProps & {
-    label: string;
+    label?: string;
     errorText?: string;
     icon?: keyof typeof MaterialIcons.glyphMap;
     }
@@ -23,6 +23,7 @@ const TextField = ({label, errorText, icon, style, ...restInputProp }: Props) =>
 
                 <TextInput
                    keyboardAppearance="dark"
+                   placeholderTextColor="#302f2fff"
                    style={[global.input, style]}
                     /*cont textFild = (props: props) =>{
                         const label = props.label;
@@ -42,9 +43,7 @@ const TextField = ({label, errorText, icon, style, ...restInputProp }: Props) =>
                 <text style={global.errorText}>{errorText}</text>
             }
         </View>
-        
-
-
+    
     ) 
 };        
 

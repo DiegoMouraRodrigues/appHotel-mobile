@@ -1,5 +1,8 @@
 import TextField from "../ui/textFild";
 import AuthContainer from "../ui/AuthContainer";
+import PasswordField from "../ui/passwordField";
+import { TouchableOpacity, Text } from "react-native";
+import { global } from "../ui/styles";
 
 const RenderLogin = () =>{
     return (
@@ -10,14 +13,26 @@ const RenderLogin = () =>{
             
                 {/*children*/ }
                 <TextField
-                label="E-email"
-                icon="email"
-                >
-                </TextField>
-            </AuthContainer>    
-           
-       
+                    label="E-email"
+                    icon="email"
+                    placeholder="user@email.com"
+                    keyboardType="email-address"
+                />
+               
+
+                 <PasswordField
+                    label="senha"
+                    icon="lock"
+                    placeholder="********"
+                />
+
+            <TouchableOpacity style={[global.primayButton]}>
+                <Text style={global.primaryButtonText}>Entrar</Text>
+            </TouchableOpacity>
+
+            </AuthContainer>
+            
     )
-}
+};
 
 export default RenderLogin;

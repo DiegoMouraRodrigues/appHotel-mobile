@@ -24,8 +24,7 @@ return(
                 {!!icon &&<Text style={global.subtitle }>{subtitle}</Text>}
             </View>
             <View style={global.content}>
-                {children}
-                <Text>oi</Text>   
+                {children}   
             </View> 
         </ScrollView>
     </KeyboardAvoidingView>      
