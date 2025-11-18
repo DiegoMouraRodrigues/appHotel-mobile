@@ -4,6 +4,7 @@ export const global = StyleSheet.create({
     safeArea: {
         flex: 1,
         backgroundColor: "#fff"
+        
     },
     keyboardAvoiding: {
         flex: 1
@@ -23,7 +24,7 @@ export const global = StyleSheet.create({
     },
     subtitle: {
         fontSize: 17,
-        color: "#3b01dbff",
+        color: "#0167dbff",
         marginTop: height * 0.01
     },
     content: {
@@ -51,7 +52,7 @@ export const global = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         borderWidth: 2,
-        borderColor: "#420350ff",
+        borderColor: "#050505ff",
         borderRadius: 10
     },
     inputError: {
@@ -80,7 +81,7 @@ export const global = StyleSheet.create({
     },
 
     primayButton:{
-        backgroundColor:"#34036b",
+        backgroundColor:"#3642e7ff",
         borderRadius: 10,
         padding: width *0.02,
         alignItems: "center"

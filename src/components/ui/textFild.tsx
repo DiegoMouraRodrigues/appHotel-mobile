@@ -1,50 +1,53 @@
-
-import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome6, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TextInput, TextInputProps, View } from "react-native";
 import { global } from "./styles";
 
-type Props = TextInputProps & {
-    label?: string;
-    errorText?: string;
-    icon?: keyof typeof MaterialIcons.glyphMap;
-    }
+//Bibliotecas de ícones aceitas
+type NameIcon = 
+    | {lib: "MaterialIcons"; name: keyof typeof MaterialIcons.glyphMap }
+    | {lib: "FontAwesome6"; name: keyof typeof FontAwesome6.glyphMap };
 
-const TextField = ({label, errorText, icon, style, ...restInputProp }: Props) =>{
+type Props = TextInputProps & {
+    label: string;
+    errorText?: string;
+    icon?: NameIcon;
+}
+
+const TextField = ({label, errorText, icon, style, ...restInputProps } : Props) => {
     return (
         <View style={global.inputGroup}>
             <Text style={global.label}>{label}</Text>
             <View style={[global.inputIcon, errorText ? global.inputError : null]}>
                 {!! icon && (
-                    <View> 
-                        <MaterialIcons name={icon} size={23} color="black"/>
+                    <View>
+                        {icon.lib === "MaterialIcons" && (
+                            <MaterialIcons name={icon.name} size={23} color="purple" />
+                        )}
                     </View>
                 )}
-
                 <TextInput
-                   keyboardAppearance="dark"
-                   placeholderTextColor="#302f2fff"
-                   style={[global.input, style]}
-                    /*cont textFild = (props: props) =>{
+                    keyboardAppearance="dark"
+                    placeholderTextColor="#9ca3af"
+                    style={[global.input, style]}
+                    /* const TextField = (props: Props) => {
                         const label = props.label;
-                        cosnt errorTerxt = props.errorText;
+                        const errorText = props.errorText;
                         const style = props.style;
                         const value = props.value;
-                        const onChargeText = props.onChargeText;
+                        const onChangeText = props.onChangeText;
                         const placeholder = props.placeholder;
-                        const autoCapitalize = autoCapitalize;
-                        const keyboardType = props.keyBoardType
-                    */
-
-                    {...restInputProp}
+                        const autoCapitalize = props.autoCapitalize;
+                        const keyboardType = props.keyboardType;
+                    } */
+                    {...restInputProps}
                 />
-            </View>
-            {!! errorText && 
-                <text style={global.errorText}>{errorText}</text>
+            </View>   
+            {!! errorText &&
+                <Text style={global.errorText}>{errorText}</Text>
             }
         </View>
-    
-    ) 
-};        
+    )
+};
 
 export default TextField;

@@ -11,8 +11,8 @@ const AuthLayout = () =>{
     return (
         <Stack screenOptions={{headerShown:false}}>
             <Stack.Screen name="index" options={{title: "login"}}/>
-            {/* <Stack.Screen name="register" />  options={{title: "cadastro"}} */ }
-            {/* <Stack.Screen name="resetPassord" />  options={{title: "Esqueci minha senha"}} */ }  
+            <Stack.Screen name="register" options={{ title: "Cadastro" }}/>
+            <Stack.Screen name="resetPassword" options={{ title: "Esqueci minha senha" }}/>
         </Stack>
     )
  }
