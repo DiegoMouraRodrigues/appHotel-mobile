@@ -1,3 +1,4 @@
+
 import { FontAwesome6, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TextInput, TextInputProps, View } from "react-native";
@@ -10,7 +11,7 @@ type NameIcon =
 
 type Props = TextInputProps & {
     label: string;
-    errorText?: string;
+    errorText?: string; 
     icon?: NameIcon;
 }
 
