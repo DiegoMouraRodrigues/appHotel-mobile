@@ -16,9 +16,10 @@ type Props = {
   subtitle?: string;
   icon?: keyof typeof FontAwesome6.glyphMap;
   children: React.ReactNode;
+  headerLeft?: React.ReactNode;
 };
 
-const AuthContainer = ({ title, subtitle, icon, children }: Props) => {
+const AuthContainer = ({ title, subtitle, icon, children, headerLeft }: Props) => {
   return (
     <SafeAreaView style={global.safeArea}>
       <KeyboardAvoidingView
@@ -26,6 +27,11 @@ const AuthContainer = ({ title, subtitle, icon, children }: Props) => {
         style={global.keyboardAvoiding}
       >
         <ScrollView contentContainerStyle={global.container}>
+          {headerLeft && (
+            <View style={{position: "absolute", top: 90, left: 20, zIndex: 10 }}>
+              {headerLeft}
+            </View>
+          )}
           <View style={global.header}>
 
             {!!icon && <FontAwesome6 name={icon} size={30} color="purple" />}

@@ -5,6 +5,8 @@ import AuthContainer from "../ui/AuthContainer";
 import PasswordField from "../ui/passwordField";
 import { global } from "../ui/styles";
 import TextField from "../ui/textFild";
+import { Ionicons } from "@expo/vector-icons";
+
 
 const RenderRegister = () => {
     const router = useRouter();
@@ -13,7 +15,11 @@ const RenderRegister = () => {
     return (
         
         <AuthContainer    
-            
+            headerLeft={
+                <TouchableOpacity onPress={() => router.back()}>
+                    <Ionicons name="arrow-back" size={25} color="#aaa9a9ff" />
+                </TouchableOpacity>
+            }
             title="Cadastre-se agora!"
             icon="hotel">
 

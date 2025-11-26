@@ -1,23 +1,25 @@
 import DatePicker, {getFormatedDate, getToday} from "react-native-modern-datepicker"
 import {Label } from "@react-navigation/elements";
 import { useState } from "react"
-import { View} from "react-native";
+import { Dimensions, Text, View} from "react-native";
 
+type DateSelectorProps = {
+    onSelectDate: (date: string) => void;
+}
 
-type Props = {
-    label?: string;
-};
-
-
-const dateSelector = ({label}: Props) => {
-    const tomorrow = new Date(getToday() +1);
-    const startDate = getFormatedDate(tomorrow, "YYYY/MM/DD h:m") 
+const dateSelector = ({onSelectDate} : DateSelectorProps) => {
+   const {width, height} = Dimensions.get("window");
+   const startDate = getToday();
+   console.log(startDate);
+//    const tomorrow = new Date(startDate);
+//    console.log(typeof(tomorrow)); 
 
     const [selectDate, setSelectedDate]= useState("");
     return(
         <View>
-            {!!Label &&<text>{label}</text>}
+            {!!Label &&<Text></Text>}
             <DatePicker
+                mode="calendar"
                 options={{
                     backgroundColor: '#090C08',
                     textHeaderColor: '#FFA25B',
@@ -26,17 +28,19 @@ const dateSelector = ({label}: Props) => {
                     mainColor: '#F4722B',
                     textSecondaryColor: '#D6C7A1',
                     borderColor: 'rgba(122, 146, 165, 0.1)',
+                    textFontSize: 15,
+                    textHeaderFontSize: 15,
                 }}
-                style={{borderRadius: 15}}
+                style={{borderRadius: 15, width: width * 0.62, height: "auto"}}
                 isGregorian={true}
                 minimumDate={startDate}
                 selected={selectDate}
-                onSelectedChange={date => setSelectedDate(date)}
+                onSelectedChange={(Date) =>{
+                    setSelectedDate(Date);
+                    onSelectDate;
+                }}
                 />
-                
-    
         </View>
     );
 };
-
 export default dateSelector;
