@@ -94,6 +94,6 @@ export const global = StyleSheet.create({
 
     primaryButtonText:{
         color: "#ffff"
-    }
+    },
 
 })  
