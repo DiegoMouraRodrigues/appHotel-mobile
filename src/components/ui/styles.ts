@@ -1,0 +1,99 @@
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = Dimensions.get("window");
+export const global = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        backgroundColor: "#fff"
+        
+    },
+    keyboardAvoiding: {
+        flex: 1
+    },
+    container: {
+        paddingHorizontal: width * 0.07,
+        paddingVertical: height * 0.07
+    },
+    header: {
+        alignItems: "center",
+        marginBottom: height * 0.03
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: "800",
+        /*Para atribuir cor: color:*/
+    },
+    subtitle: {
+        fontSize: 17,
+        color: "#0167dbff",
+        marginTop: height * 0.01
+    },
+    content: {
+        backgroundColor: "#eef3faff",
+        borderRadius: 10,
+        padding: width * 0.02,
+        shadowColor: "#0e0b0bff",
+        shadowOpacity: 0.05,
+        shadowRadius: 10,
+        elevation: 2
+    },
+    //Inputs
+    inputGroup: {
+        marginBottom: height * 0.02,
+    },
+    label: {
+        fontSize: 17,
+        fontWeight: "600",
+        color: "#120715ff",
+        marginBottom: height * 0.01
+    },
+    inputIcon: {
+        backgroundColor: "#fcfcffff",
+        paddingLeft: width * 0.02,
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 2,
+        borderColor: "#050505ff",
+        borderRadius: 10
+    },
+    inputError: {
+       backgroundColor: "#fed5d5ff",
+        borderColor: "rgba(139, 0, 0, 1)",
+    },
+
+    input: {
+        flex: 1,
+        fontSize: 17,
+        color: "#000",
+        paddingHorizontal: width * 0.02
+    },
+
+    eyeIcon:{
+      position: "absolute",
+      right: 12,
+      top:45  
+    },
+
+    errorText: {
+        color: "red",
+        fontWeight: "600",
+        fontSize: 15,
+        marginTop: height * 0.01   
+    },
+
+    primayButton:{
+        backgroundColor:"#3642e7ff",
+        borderRadius: 10,
+        padding: width *0.02,
+        alignItems: "center"
+    },
+
+    primaryButtonDisabled:{
+        backgroundColor: "#727272ff",
+        borderRadius: 10,
+    },
+
+    primaryButtonText:{
+        color: "#ffff"
+    },
+
+})  
