@@ -35,7 +35,8 @@ const RenderAccount = () => {
           marginBottom: 20,
         }}
       >
-        Gerencie seus dados e altere suas informações
+        Gerencie seus dados e altere suas informa
+        ções
       </Text>
 
      
@@ -104,6 +105,8 @@ const RenderAccount = () => {
         </TouchableOpacity>
       </View>
     </AuthContainer>
+
+    
   );
 };
 
