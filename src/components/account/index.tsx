@@ -4,6 +4,8 @@ import { MaskedTextInput } from "react-native-mask-text";
 import AuthContainer from "../ui/AuthContainer";
 import { global } from "../ui/styles";
 import TextField from "../ui/textFild";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "../../../.expo/types/router";
 
 const RenderAccount = () => {
   const [nome, setNome] = useState("");
@@ -11,6 +13,13 @@ const RenderAccount = () => {
   const [cpf, setCpf] = useState("");       
   const [telefone, setTelefone] = useState("");
   const [alterarSenha, setAlterarSenha] = useState(false);
+
+  // const {signOut} = useAuth();
+  // const router = useRouter();
+  // const logout = async () => {
+  //   await signOut();
+  //   router.push("/(auth)");
+  // };
   
 
   return (
@@ -35,8 +44,7 @@ const RenderAccount = () => {
           marginBottom: 20,
         }}
       >
-        Gerencie seus dados e altere suas informa
-        ções
+        Gerencie seus dados e altere suas informações
       </Text>
 
      
@@ -99,10 +107,13 @@ const RenderAccount = () => {
          style={[global.primayButton, { marginTop: 10 }]}>
           <View>
             <Text style={global.primaryButtonText}>Alterar senha
-
             </Text>
           </View>
         </TouchableOpacity>
+{/* 
+        <TouchableOpacity onPress={logout}>
+          <Text style={global.primaryButtonText}>Sair da conta</Text>
+        </TouchableOpacity> */}
       </View>
     </AuthContainer>
 
