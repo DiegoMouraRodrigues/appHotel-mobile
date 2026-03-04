@@ -1,5 +1,5 @@
 import { FontAwesome5, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 import { global } from "./styles";
 type Infos = { title?: string; text: string; price: number };
 type NameIcon =
@@ -7,7 +7,11 @@ type NameIcon =
   | { lib: "FontAwesome6"; name: keyof typeof FontAwesome6.glyphMap }
   | { lib: "FontAwesome5"; name: keyof typeof FontAwesome5.glyphMap };
 type Props = {
-  //image?:
+  nome?:string
+  price: number;
+  descricao: string;
+  containerStyle?: any;
+  image?: ImageSourcePropType;
   label?: string;
   description?: Infos;
   icon?: NameIcon;

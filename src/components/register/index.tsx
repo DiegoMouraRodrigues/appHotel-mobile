@@ -21,11 +21,6 @@ const RenderRegister = () => {
     return (
 
         <AuthContainer
-            headerLeft={
-                <TouchableOpacity onPress={() => router.back()}>
-                    <Ionicons name="arrow-back" size={25} color="#aaa9a9ff" />
-                </TouchableOpacity>
-            }
             title="Cadastre-se agora!"
             icon="hotel">
 
