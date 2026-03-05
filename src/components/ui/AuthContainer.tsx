@@ -16,6 +16,8 @@ type Props = {
   subtitle?: string;
   icon?: keyof typeof FontAwesome6.glyphMap;
   children: React.ReactNode;
+  SafeArea2?: any;
+
 };
 
 const AuthContainer = ({ title, subtitle, icon, children }: Props) => {

@@ -8,8 +8,8 @@ type NameIcon =
   | { lib: "FontAwesome5"; name: keyof typeof FontAwesome5.glyphMap };
 type Props = {
   nome?:string
-  price: number;
-  descricao: string;
+  price?: number;
+  descricao?: string;
   containerStyle?: any;
   image?: ImageSourcePropType;
   label?: string;

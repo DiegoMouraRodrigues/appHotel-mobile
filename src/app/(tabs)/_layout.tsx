@@ -1,5 +1,5 @@
-/*Função: definir o fluxo de navegação entre as telas disponíveis em Tab Navigator:
-Explorar, Reservas, Perfil*/
+{/*Função: definir o fluxo de navegação entre as telas disponíveis em Tab Navigator:
+Explorar, Reservas, Perfil*/}
 import { useAuth } from "@/contexts/AuthContext";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Redirect, Tabs } from "expo-router";

@@ -4,6 +4,8 @@ import { MaskedTextInput } from "react-native-mask-text";
 import AuthContainer from "../ui/AuthContainer";
 import { global } from "../ui/styles";
 import TextField from "../ui/textFild";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "expo-router";
 
 const RenderAccount = () => {
   const [nome, setNome] = useState("");
@@ -11,15 +13,15 @@ const RenderAccount = () => {
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
 
-  // const {signOut} = useAuth();
-  // const router = useRouter();
-  // const logout = async () => {
-  //   await signOut();
-  //   router.push("/(auth)");
-  // };
+  const {signOut} = useAuth();
+  const router = useRouter();
+  const logout = async () =>{
+    await signOut();
+    router.replace("/(auth)");
+  };
 
 
-  //  modal para  alteração de senha
+  {/*modal para  alteração de senha*/}
   const [exibirModalSenha, setExibirModalSenha] = useState(false);
   const [senhaAntiga, setSenhaAntiga] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
@@ -102,19 +104,27 @@ const RenderAccount = () => {
         onChangeText={setEmail}
       />
 
-      <View style={{ marginTop: 20 }}>
+      <View style={{ marginTop: 20, gap: 12 }}>  {/* ou gap: 16, 20... */}
         <TouchableOpacity style={global.primayButton}>
           <Text style={global.primaryButtonText}>Alterar dados</Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity style={global.primayButton} onPress={() => setExibirModalSenha(true)}>
-           <Text style={global.primaryButtonText}>Alteração de senha</Text>
+
+        <TouchableOpacity
+          style={global.primayButton}
+          onPress={() => setExibirModalSenha(true)}
+        >
+          <Text style={global.primaryButtonText}>Alteração de senha</Text>
         </TouchableOpacity>
 
-        {/* 
-        <TouchableOpacity onPress={logout}>
-          <Text style={global.primaryButtonText}>Sair da conta</Text>
-        </TouchableOpacity> */}
+        
+        <TouchableOpacity
+          style={global.primayButton}
+          onPress={logout}
+        >
+          <Text style={global.primaryButtonText}>Sair</Text>
+        </TouchableOpacity>
+
+         
       </View>
 
       {/* Modal de senha (mantido igual) */}
