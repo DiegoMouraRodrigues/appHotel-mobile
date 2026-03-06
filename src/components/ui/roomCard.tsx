@@ -6,6 +6,7 @@ type NameIcon =
   | { lib: "MaterialIcons"; name: keyof typeof MaterialIcons.glyphMap }
   | { lib: "FontAwesome6"; name: keyof typeof FontAwesome6.glyphMap }
   | { lib: "FontAwesome5"; name: keyof typeof FontAwesome5.glyphMap };
+
 type Props = {
   nome?:string
   price?: number;
@@ -15,6 +16,7 @@ type Props = {
   label?: string;
   description?: Infos;
   icon?: NameIcon;
+  
 };
 const { width, height } = Dimensions.get("window");
 const RoomCard = ({ label, description, icon }: Props) => {

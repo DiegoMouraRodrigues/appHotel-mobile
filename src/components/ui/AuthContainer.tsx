@@ -20,9 +20,9 @@ type Props = {
 
 };
 
-const AuthContainer = ({ title, subtitle, icon, children }: Props) => {
+const AuthContainer = ({ title, subtitle, icon, children, SafeArea2 }: Props) => {
   return (
-    <SafeAreaView style={global.safeArea}>
+    <SafeAreaView style={[global.safeArea, SafeArea2]}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={global.keyboardAvoiding}
@@ -33,7 +33,8 @@ const AuthContainer = ({ title, subtitle, icon, children }: Props) => {
             {!!title && <Text style={global.title}>{title}</Text>}
             {!!subtitle && <Text style={global.subtitle}>{subtitle}</Text>}
           </View>
-          <View>{children}</View>{" "}
+          <View>{children}</View>
+          
           {/* Retirada a estilização global.content para não impactar no 
           componente AuthContainer a ser chamado em outras telas */}
         </ScrollView>

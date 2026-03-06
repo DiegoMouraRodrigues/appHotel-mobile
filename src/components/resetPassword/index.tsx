@@ -11,14 +11,12 @@ const RenderResetPassword = () => {
 
     return (
         <AuthContainer
-             headerLeft={
-                <TouchableOpacity onPress={() => router.back()}>
-                    <Ionicons name="arrow-back" size={25} color="#aaa9a9ff" />
-                </TouchableOpacity>
-            }
             title="Redefinição de senha"
             subtitle="Digite seu email para receber e redefinir sua senha"
             icon="hotel">
+            <TouchableOpacity onPress={() => router.back()}>
+                <Ionicons name="arrow-back" size={25} color="#aaa9a9ff" />
+            </TouchableOpacity>
     
              <TextField
                 label="Seu E-mail"
