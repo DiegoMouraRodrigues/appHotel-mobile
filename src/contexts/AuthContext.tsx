@@ -15,6 +15,17 @@ type AuthContextProps = {
     }) => Promise<void>;
     signOut: () => Promise<void>;
     consulta: (inicio: string, fim: string, quantidade: number) => Promise<any>;
+    cartReservations: CartReservation[];
+    addReservationToCart: (reservation: CartReservation) => void;
+    removeReservationFromCart: (index: number) => void;
+    clearCart: () => void;
+    createOrder: (pagamento: string) => Promise<void>;
+};
+
+type CartReservation = {
+    roomId: string;
+    dataInicio: string;
+    dataFim: string;
 };
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -130,7 +141,68 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setToken(null);
     }
 
-    const value = useMemo(() => ({ token, isLoading, signIn, signUp, signOut, consulta }), [token, isLoading]);
+    const [cartReservations, setCartReservations] = useState<CartReservation[]>([]);
+
+    const addReservationToCart = (reservation: CartReservation) => {
+        setCartReservations((prev) => [...prev, reservation]);
+    };
+
+    const removeReservationFromCart = (index: number) => {
+        setCartReservations((prev) => prev.filter((_, i) => i !== index));
+    };
+
+    const clearCart = () => {
+        setCartReservations([]);
+    };
+
+    const createOrder = async (pagamento: string) => {
+        if (!token) {
+            throw new Error("Usuário não autenticado");
+        }
+
+        if (cartReservations.length === 0) {
+            throw new Error("Carrinho está vazio!");
+        }
+
+        const quartos = cartReservations.map((item) => ({
+            id: item.roomId,
+            dataInicio: item.dataInicio,
+            dataFim: item.dataFim,
+        }));
+
+        const res = await fetch(`${API_URL}/reserva`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ pagamento, quartos }),
+        });
+
+        const result = await res.json().catch(() => null);
+        if (!res.ok) {
+            throw new Error(result?.message || "Erro ao finalizar pedido");
+        }
+
+        clearCart();
+    };
+
+    const value = useMemo(
+        () => ({
+            token,
+            isLoading,
+            signIn,
+            signUp,
+            signOut,
+            consulta,
+            cartReservations,
+            addReservationToCart,
+            removeReservationFromCart,
+            clearCart,
+            createOrder,
+        }),
+        [token, isLoading, cartReservations],
+    );
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

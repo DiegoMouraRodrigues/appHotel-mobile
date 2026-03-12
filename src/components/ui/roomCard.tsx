@@ -1,75 +1,97 @@
-import { FontAwesome5, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
-import { Dimensions, ImageSourcePropType, StyleSheet, Text, View } from "react-native";
-import { global } from "./styles";
-type Infos = { title?: string; text: string; price: number };
-type NameIcon =
-  | { lib: "MaterialIcons"; name: keyof typeof MaterialIcons.glyphMap }
-  | { lib: "FontAwesome6"; name: keyof typeof FontAwesome6.glyphMap }
-  | { lib: "FontAwesome5"; name: keyof typeof FontAwesome5.glyphMap };
+// RoomCard.tsx  (ou renomeie o arquivo para RenderRoomCard.tsx)
 
-type Props = {
-  nome?:string
-  price?: number;
-  descricao?: string;
-  containerStyle?: any;
-  image?: ImageSourcePropType;
-  label?: string;
-  description?: Infos;
-  icon?: NameIcon;
-  
-};
-const { width, height } = Dimensions.get("window");
-const RoomCard = ({ label, description, icon }: Props) => {
+import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { global } from './styles';
+
+interface RoomCardProps {
+  image: ImageSourcePropType;
+  name: string;
+  price: number;
+  descricao: string;
+  containerStyle?: any;       // ideal: import { ViewStyle } from 'react-native' e usar ViewStyle
+  onPress: () => void;
+  onDelete: () => void;
+}
+
+export default function RenderRoomCard({
+  image,
+  name,
+  price,
+  descricao,
+  containerStyle = {},
+  onPress,
+  onDelete,
+}: RoomCardProps) {
   return (
-    <View style={global.content}>
-      <View>{/* imagem */}</View>
-      <View>
-        {!!label && <Text style={global.title}>{label}</Text>}
-        <View>
-          <View>
-            {!!icon && (
-              <View>
-                {icon.lib === "MaterialIcons" && (
-                  <MaterialIcons name={icon.name} size={23} color="purple" />
-                )}
-                {icon.lib === "FontAwesome5" && (
-                  <FontAwesome5 name={icon.name} size={23} color="purple" />
-                )}
-                {icon.lib === "FontAwesome6" && (
-                  <FontAwesome6 name={icon.name} size={23} color="purple" />
-                )}
-              </View>
-            )}
-            {!!description && (
-              <View style={styles.description}>
-                <View>
-                  {!!description.title && <Text>{description.title}</Text>}
-                  <Text>{description.text}</Text>
-                </View>
-                <View>
-                  <Text>R$ {description.price}</Text>
-                </View>
-              </View>
-            )}
-          </View>
-        </View>
+    <TouchableOpacity 
+      activeOpacity={0.8}
+      style={[styles.card, containerStyle]} 
+      onPress={onPress}
+    >
+      <Image 
+        source={image} 
+        style={styles.image} 
+        resizeMode="cover"
+      />
+
+      <View style={styles.info}>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.descricao}>{descricao}</Text>
+        <Text style={styles.price}>R$ {price},00</Text>
+
+        {/* Botão de deletar exemplo */}
+        <TouchableOpacity 
+          style={styles.deleteButton} 
+          onPress={onDelete}
+        >
+          <Text style={styles.deleteText}>Remover</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  description: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#f3e6ffff",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-    elevation: 2,
+  card: {
+    width: 220,
+    borderRadius: 16,
+    backgroundColor: '#fff',
+    overflow: 'hidden',
+    marginRight: 16,
+  },
+  image: {
+    width: '100%',
+    height: 140,
+  },
+  info: {
+    padding: 12,
+  },
+  name: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  descricao: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 8,
+  },
+  price: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#2a6fdd',
+  },
+  deleteButton: {
+    marginTop: 8,
+    alignSelf: 'flex-start',
+    backgroundColor: '#ff444450',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  deleteText: {
+    color: '#ff4444',
+    fontWeight: '600',
+    fontSize: 13,
   },
 });
-export default RoomCard;
